@@ -1,0 +1,53 @@
+<programa> ::= <declaracoes>
+
+<declaracoes> ::= <declaracao> ("\n" (" ")* <declaracao>)*
+
+<declaracao> ::= <declaracao_variavel> | <atribuicao> | <operacao_aritmetica> | <print> | <controle> | <laco> | <comentario>
+
+<laco> ::= <palavra_chave_laco> (" ")* "(" <condicao> ")" (" ")* <delimitador_abertura> <declaracoes> <delimitador_fechamento>
+
+<controle> ::= <palavra_chave_controle> (" ")* "(" <condicao> ")" (" ")* <delimitador_abertura> <declaracoes> <delimitador_fechamento> (<palavra_chave_alternativo_controle> (" ")* <delimitador_abertura> <declaracoes> <delimitador_fechamento>)*
+
+<condicao> ::= (<variavel> | <digito>) (" ")* <operador_comparacao> (" ")* (<variavel> | <digito>)
+
+<print> ::= <palavra_chave_impressao> " " (<variavel> | <texto>)
+
+<atribuicao> ::= <variavel> (" ")* <operador_atribuicao> (" ")* (<numero> | <operacao_aritmetica>)
+
+<operacao_aritmetica> ::= (<variavel> | <digito>) (" ")* <operador_aritmetico> (" ")* (<variavel> | <digito>)
+
+<declaracao_variavel> ::= <palavra_chave_tipo> " " <lista_variaveis>
+
+<lista_variaveis> ::= <variavel> ((", " | ",") <variavel>)*
+
+<variavel> ::= <letra> (<letra> | <digito>)*
+
+<comentario> ::= "#" (" ")* <texto>
+
+<delimitador_fechamento> ::= (" " | "\n")* "}" (" " | "\n")*
+
+<delimitador_abertura> ::= "{" (" " | "\n")*
+
+<operador_atribuicao> ::= "="
+
+<operador_comparacao> ::= "==" | "!=" | "<" | ">" | "<=" | ">="
+
+<operador_aritmetico> ::= "+" | "-" | "*" | "/"
+
+<palavra_chave_laco> ::= "while"
+
+<palavra_chave_alternativo_controle> ::= "else"
+
+<palavra_chave_controle> ::= "if"
+
+<palavra_chave_impressao> ::= "print"
+
+<palavra_chave_tipo> ::= "int" | "float"
+
+<texto> ::= (<numero> | <letra>) (<numero> | <letra> | " ")*
+
+<numero> ::= <digito> <digito>*
+
+<digito> ::= [0-9]
+
+<letra> ::= [a-z] | [A-Z]
